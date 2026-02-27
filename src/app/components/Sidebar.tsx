@@ -54,7 +54,7 @@ export function Sidebar({
         opacity: 1
       }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className={`h-screen flex flex-col p-4 relative z-50 fs-glass-pro border-r-0 shadow-2xl overflow-hidden transition-all duration-300 ${isCollapsed ? 'items-center' : ''}`}
+      className={`h-full flex flex-col p-4 relative z-50 fs-glass-pro border-r-0 shadow-2xl overflow-hidden transition-all duration-300 ${isCollapsed ? 'items-center' : ''}`}
       role="complementary"
       aria-label="Main Sidebar"
     >
