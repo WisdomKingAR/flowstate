@@ -163,68 +163,71 @@ export default function App() {
         onSettingsClick={() => setActiveView('settings')}
       />
 
-      {/* Sidebar */}
-      <div className={`hidden md:block transition-all duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-64'}`}>
-        <Sidebar
-          activeView={activeView}
-          onViewChange={setActiveView}
-          isCollapsed={isSidebarCollapsed}
-        />
-      </div>
+      {/* Main Layout Container */}
+      <div className={`flex-1 flex transition-all duration-500 ease-in-out ${focusActive ? 'mt-14' : ''}`}>
+        {/* Sidebar */}
+        <div className={`hidden md:block transition-all duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-64'}`}>
+          <Sidebar
+            activeView={activeView}
+            onViewChange={setActiveView}
+            isCollapsed={isSidebarCollapsed}
+          />
+        </div>
 
-      {/* Mobile Sidebar (Drawer) */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[60] md:hidden"
-            />
-            <motion.div
-              initial={{ x: -280 }}
-              animate={{ x: 0 }}
-              exit={{ x: -280 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 left-0 h-full w-[280px] z-[70] md:hidden"
-            >
-              <Sidebar
-                activeView={activeView}
-                onViewChange={(view) => {
-                  setActiveView(view);
-                  setIsMobileMenuOpen(false);
-                }}
-              />
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
-      {/* Main Content */}
-      <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-500 ease-in-out ${focusActive ? 'mt-14 scale-[0.99] origin-top' : ''}`}>
-        <SearchHeader
-          onCommandPaletteOpen={() => setCommandPaletteOpen(true)}
-          onMenuToggle={() => setIsMobileMenuOpen(true)}
-          isSidebarCollapsed={isSidebarCollapsed}
-          onSidebarToggle={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-        />
-
-        <div id="scroll-container" ref={scrollContainerRef} className="flex-1 overflow-y-auto overflow-x-hidden p-6 relative">
-          <div ref={contentRef} className="min-h-full">
-            <AnimatePresence mode="wait">
+        {/* Mobile Sidebar (Drawer) */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <>
               <motion.div
-                key={activeView}
-                variants={pageVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className="w-full h-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[60] md:hidden"
+              />
+              <motion.div
+                initial={{ x: -280 }}
+                animate={{ x: 0 }}
+                exit={{ x: -280 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                className="fixed top-0 left-0 h-full w-[280px] z-[70] md:hidden"
               >
-                {renderView()}
+                <Sidebar
+                  activeView={activeView}
+                  onViewChange={(view) => {
+                    setActiveView(view);
+                    setIsMobileMenuOpen(false);
+                  }}
+                />
               </motion.div>
-            </AnimatePresence>
+            </>
+          )}
+        </AnimatePresence>
+
+        {/* Main Content Area */}
+        <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-500 ease-in-out ${focusActive ? 'scale-[0.99] origin-top' : ''}`}>
+          <SearchHeader
+            onCommandPaletteOpen={() => setCommandPaletteOpen(true)}
+            onMenuToggle={() => setIsMobileMenuOpen(true)}
+            isSidebarCollapsed={isSidebarCollapsed}
+            onSidebarToggle={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+          />
+
+          <div id="scroll-container" ref={scrollContainerRef} className="flex-1 overflow-y-auto overflow-x-hidden p-6 relative">
+            <div ref={contentRef} className="min-h-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeView}
+                  variants={pageVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="w-full h-full"
+                >
+                  {renderView()}
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>

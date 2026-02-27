@@ -29,7 +29,7 @@ export function SearchHeader({
   };
 
   return (
-    <div className="w-full bg-[var(--color-bg-card)] border-b border-[var(--color-divider)] px-6 py-4 flex items-center gap-4 transition-colors">
+    <div className="w-full bg-[var(--color-bg-card)]/80 backdrop-blur-xl border-b border-[var(--color-divider)] px-6 py-4 flex items-center gap-4 transition-colors sticky top-0 z-10 fs-glass">
       {/* Mobile Menu Toggle */}
       <button
         onClick={onMenuToggle}

@@ -47,7 +47,7 @@ export function FocusBanner({
       <motion.button
         whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.2)' }}
         whileTap={{ scale: 0.95, backgroundColor: 'rgba(255,255,255,0.3)' }}
-        className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors"
+        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 transition-all hover:border-white/40"
         onClick={onSettingsClick}
       >
         <Settings className="w-5 h-5" />
