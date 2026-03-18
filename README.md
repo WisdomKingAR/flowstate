@@ -9,6 +9,16 @@
 
 ---
 
+## 🏆 Built at Cyber Cypher — NMIMS National Hackathon 2025
+
+FlowState was designed and built during **Cyber Cypher**, an 18-hour national hackathon hosted by NMIMS Mumbai. We qualified Round 1 and shipped this project under real time pressure — from problem framing to working demo in under 18 hours.
+
+**Built by:**
+- [Aaryan Raorane](https://github.com/WisdomKingAR) — UI/UX direction, product decisions, frontend implementation
+- [Tejas Kute](https://github.com/tejaskute284-dotcom) — architecture, component structure, technical execution
+
+---
+
 ## 📖 Table of Contents
 
 -   [About](#-about)
